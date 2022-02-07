@@ -9,6 +9,11 @@
             "repo": "https://github.com/brenocq-atta/obstacle-avoidance",
             "user": "brenocq",
             "timestamp": "2021-12-25T14:27:20.314159"
+        },
+        {
+            "repo": "https://github.com/brenocq-atta/boids",
+            "user": "brenocq",
+            "timestamp": "2022-02-07T06:52:31.415926"
         }
     ]
 }
