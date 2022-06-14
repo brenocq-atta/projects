@@ -21,16 +21,23 @@ def addRequest(repo, user, timestamp):
 
 def processRequest(body, username, timestamp):
     # Parse repo github path
-    repo = body.split('**Github repository**\n')[1].split('\n')[0]
+    repo = ''
+    for line in body.split('\n'):
+        if 'https://github.com/' in line:
+            repo = line.strip()
+            break
 
-    # Add request
-    addRequest(repo, username, timestamp)
+    if repo != '':
+        # Add request
+        addRequest(repo, username, timestamp)
 
-    # Build project path
-    projectPath = repo.split('https://github.com/')[1]
-    if projectPath[-1] == '/':
-        projectPath = projectPath[:-1]
-    return projectPath
+        # Build project path
+        projectPath = repo.split('https://github.com/')[1]
+        if projectPath[-1] == '/':
+            projectPath = projectPath[:-1]
+        return projectPath
+    else:
+        return 'PARSE_ERROR'
 
 projectPath = processRequest(issueBody, issueUser, timeAdded)
 print("PROJECT_PATH="+projectPath)
