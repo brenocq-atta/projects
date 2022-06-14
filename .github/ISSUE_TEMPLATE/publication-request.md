@@ -1,9 +1,9 @@
 ---
 name: Publication request
 about: Create a publication request for your project so that other people can easily
-  try it
-title: ''
-labels: publish-request
+  try it.
+title: 'The name of your project'
+labels: publication-request
 assignees: ''
 
 ---

@@ -1,0 +1,44 @@
+name: Publish project
+on:
+  issues:
+    types:
+      - labeled
+jobs:
+  publish-project:
+    if: github.event.label.name == 'accepted'
+    runs-on: ubuntu-latest
+    env:
+      ISSUE_USER: ${{ github.event.issue.user.login }}
+      ISSUE_BODY: ${{ github.event.issue.body }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Shows issue
+        run: |
+          echo $ISSUE_USER
+          echo $ISSUE_BODY
+
+      - name: Run script
+        run: python .github/scripts/publish.py
+
+      - name: Auto commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Project published. thanks, @${{env.ISSUE_USER}}!"
+
+      - name: Add reaction to original issue
+        uses: aidan-mundy/react-to-issue@v1.0.2
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          reactions: heart, hooray
+
+      # Comment and close original issue
+      - name: Close original issue
+        uses: peter-evans/close-issue@v1.0.3
+        with:
+          comment: |
+            Thanks for publishing your project!
+            You can check your project page [here](https://atta.brenocq.com/projects/${{ env.PROJECT_PATH }}).
+            Your web build is available [here](https://atta.brenocq.com/${{ env.PROJECT_PATH }}/build).
+            Now anyone can open your project from the atta engine too! `File>Open>From published`.
