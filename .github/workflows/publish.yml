@@ -30,7 +30,9 @@ jobs:
       - name: Remove publication-request label
         uses: actions-ecosystem/action-remove-labels@v1
         with:
-          labels: publication-request
+          labels: |
+            accepted
+            publication-request
 
       - name: Add published label
         uses: actions-ecosystem/action-add-labels@v1
