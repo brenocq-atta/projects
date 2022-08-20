@@ -51,5 +51,4 @@ jobs:
           comment: |
             Thanks for publishing your project!
             You can check your project page [here](https://atta.brenocq.com/projects/${{ env.PROJECT_PATH }}).
-            Your web build is available [here](https://atta.brenocq.com/projects/${{ env.PROJECT_PATH }}/build).
             Now anyone can open your project from the atta engine too! `File>Open>From published`.
