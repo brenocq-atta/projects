@@ -19,6 +19,11 @@
             "repo": "https://github.com/brenocq-atta/game-of-life",
             "user": "brenocq",
             "timestamp": "2022-08-24T07:27:40.828891"
+        },
+        {
+            "repo": "https://github.com/brenocq-atta/robotic-arm-ga",
+            "user": "brenocq",
+            "timestamp": "2022-09-14T05:02:03.219377"
         }
     ]
 }
